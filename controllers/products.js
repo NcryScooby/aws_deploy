@@ -18,7 +18,7 @@ const getProducts = (req, res) => {
 
 const createProduct = (req, res) => {
   const { name, price } = req.body;
-  const SQL = `INSERT INTO products (name, price) VALUES ('${name}', ${price})`;
+  const SQL = `INSERT INTO products (name, price) VALUES ('${name}', '${price}')`;
 
   mysql.query(SQL, (err, result) => {
     if (err) {
