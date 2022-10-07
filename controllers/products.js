@@ -9,7 +9,7 @@ const getProducts = (req, res) => {
         error: err,
       });
     } else {
-      res.status(202).json({
+      res.status(200).json({
         products: result,
       });
     }

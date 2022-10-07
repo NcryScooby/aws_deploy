@@ -1,10 +1,10 @@
+// Configura o arquivo .env
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./routes/routes");
-
-// Configura o arquivo .env
-require("dotenv").config();
 
 // configurando bodyparser para enviar requisições pelo body no postman/front
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
