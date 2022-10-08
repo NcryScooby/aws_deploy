@@ -33,4 +33,39 @@ const createProduct = (req, res) => {
   });
 };
 
-module.exports = { getProducts, createProduct };
+const updateProduct = (req, res) => {
+  const { id } = req.params;
+  const { name, price } = req.body;
+  const SQL = `UPDATE products SET name = '${name}', price = '${price}' WHERE id = ${id}`;
+
+  mysql.query(SQL, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        error: err,
+      });
+    } else {
+      res.status(200).json({
+        message: "Product updated successfully",
+      });
+    }
+  });
+};
+
+const deleteProduct = (req, res) => {
+  const { id } = req.params;
+  const SQL = `DELETE FROM products WHERE id = ${id}`;
+
+  mysql.query(SQL, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        error: err,
+      });
+    } else {
+      res.status(200).json({
+        message: "Product deleted successfully",
+      });
+    }
+  });
+};
+
+module.exports = { getProducts, createProduct, updateProduct, deleteProduct };
